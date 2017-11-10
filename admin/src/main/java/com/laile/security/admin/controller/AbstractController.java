@@ -27,7 +27,7 @@ public abstract class AbstractController extends BaseController {
             fileDto.setInputStream(file.getInputStream());
         } catch (IOException e) {
             e.printStackTrace();
-            throw new SystemException(ResultCode.COMMON_ERROR, "文件上传失败");
+            throw new SystemException(ResultCode.COMMON_ERROR, "文件上传失败！");
         }
         return fileService.add(fileDto);
     }
