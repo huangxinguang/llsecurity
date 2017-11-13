@@ -27,11 +27,11 @@ public class RoleService extends AbstractService<Role,Integer> implements IRoleS
 
     @Override
     public void saveOrUpdate(Role role, Integer[] menuIds) {
-        Boolean exist = roleDelegate.querRoleCodeExist(role.getRoleCode());
-        if(exist) {
-            throw new TipsException("亲，此角色编码已经存在了。");
-        }
         if (role.getId() == null) {
+            Boolean exist = roleDelegate.querRoleCodeExist(role.getRoleCode());
+            if(exist) {
+                throw new TipsException("角色编码已经存在");
+            }
             roleDelegate.saveRole(role, menuIds);
         } else {
             roleDelegate.updateRole(role, menuIds);

@@ -38,7 +38,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">角色编码</label>
         <div class="layui-input-block">
-            <input type="text" class="layui-input" value="${role.roleCode}"  name="roleCode" lay-verify="required">
+            <input type="text" class="layui-input" value="${role.roleCode}"  name="roleCode" readonly lay-verify="required">
         </div>
     </div>
 
