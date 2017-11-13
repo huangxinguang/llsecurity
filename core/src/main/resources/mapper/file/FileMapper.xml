@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.laile.volcano.core.dao.file.FileDAO">
+<mapper namespace="com.laile.security.core.dao.file.FileDAO">
     
-    <resultMap id="BaseResultMap" type="com.laile.volcano.core.model.file.File">
+    <resultMap id="BaseResultMap" type="com.laile.security.core.model.file.File">
         <id column="id" jdbcType="VARCHAR" property="id" />
-        <result column="virtual_id" jdbcType="VARCHAR" property="virtualId" />file
+        <result column="virtual_id" jdbcType="VARCHAR" property="virtualId" />
         <result column="file_name" jdbcType="VARCHAR" property="fileName" />
         <result column="file_md5" jdbcType="VARCHAR" property="fileMd5" />
         <result column="suffix" jdbcType="VARCHAR" property="suffix" />
@@ -62,7 +62,7 @@
         where id = #{id,jdbcType=VARCHAR}
     </delete>
     
-    <insert id="insert" parameterType="com.laile.volcano.core.model.file.File">
+    <insert id="insert" parameterType="com.laile.security.core.model.file.File">
         insert into t_file (id, virtual_id, file_name, 
             file_md5, suffix, file_type, 
             file_size, source_type, file_path, 
@@ -77,7 +77,7 @@
             #{createTime,jdbcType=TIMESTAMP})
     </insert>
     
-    <insert id="insertSelective" parameterType="com.laile.volcano.core.model.file.File">
+    <insert id="insertSelective" parameterType="com.laile.security.core.model.file.File">
         insert into t_file
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -181,7 +181,7 @@
         </trim>
     </insert>
     
-    <update id="updateByPrimaryKeySelective" parameterType="com.laile.volcano.core.model.file.File">
+    <update id="updateByPrimaryKeySelective" parameterType="com.laile.security.core.model.file.File">
         update t_file
         <set>
             <if test="virtualId != null">
@@ -233,7 +233,7 @@
         where id = #{id,jdbcType=VARCHAR}
     </update>
     
-    <update id="updateByPrimaryKey" parameterType="com.laile.volcano.core.model.file.File">
+    <update id="updateByPrimaryKey" parameterType="com.laile.security.core.model.file.File">
         update t_file
         set virtual_id = #{virtualId,jdbcType=VARCHAR},
             file_name = #{fileName,jdbcType=VARCHAR},

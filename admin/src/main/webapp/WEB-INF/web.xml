@@ -10,7 +10,7 @@
   </context-param>
   <context-param>
     <param-name>webAppRootKey</param-name>
-    <param-value>volcano</param-value>
+    <param-value>security</param-value>
   </context-param>
 
   <!--处理字符编码start-->

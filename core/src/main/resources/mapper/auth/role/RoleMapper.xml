@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.laile.volcano.core.dao.auth.role.RoleDAO">
+<mapper namespace="com.laile.security.core.dao.auth.role.RoleDAO">
     
-    <resultMap id="BaseResultMap" type="com.laile.volcano.core.model.auth.role.Role">
+    <resultMap id="BaseResultMap" type="com.laile.security.core.model.auth.role.Role">
         <id column="id" jdbcType="INTEGER" property="id" />
         <result column="role_code" jdbcType="VARCHAR" property="roleCode" />
         <result column="role_name" jdbcType="VARCHAR" property="roleName" />
@@ -61,7 +61,7 @@
         where id = #{id,jdbcType=INTEGER}
     </delete>
     
-    <insert id="insert" parameterType="com.laile.volcano.core.model.auth.role.Role" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insert" parameterType="com.laile.security.core.model.auth.role.Role" useGeneratedKeys="true" keyProperty="id">
         insert into t_role (id, role_code, role_name, 
             status, remark, update_by, 
             update_time, create_time, create_by
@@ -72,7 +72,7 @@
             )
     </insert>
     
-    <insert id="insertSelective" parameterType="com.laile.volcano.core.model.auth.role.Role">
+    <insert id="insertSelective" parameterType="com.laile.security.core.model.auth.role.Role">
         insert into t_role
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -134,7 +134,7 @@
         </trim>
     </insert>
     
-    <update id="updateByPrimaryKeySelective" parameterType="com.laile.volcano.core.model.auth.role.Role">
+    <update id="updateByPrimaryKeySelective" parameterType="com.laile.security.core.model.auth.role.Role">
         update t_role
         <set>
             <if test="roleCode != null">
@@ -165,7 +165,7 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
     
-    <update id="updateByPrimaryKey" parameterType="com.laile.volcano.core.model.auth.role.Role">
+    <update id="updateByPrimaryKey" parameterType="com.laile.security.core.model.auth.role.Role">
         update t_role
         set role_code = #{roleCode,jdbcType=VARCHAR},
             role_name = #{roleName,jdbcType=VARCHAR},

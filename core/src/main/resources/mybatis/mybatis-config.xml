@@ -15,10 +15,10 @@
     </typeAliases>
 
     <plugins>
-        <plugin interceptor="com.laile.volcano.core.plugin.PagePlugin">
+        <plugin interceptor="com.laile.security.core.plugin.PagePlugin">
             <property name="dialect" value="MySQL"/>
         </plugin>
-        <plugin interceptor="com.laile.volcano.core.plugin.ResultPlugin">
+        <plugin interceptor="com.laile.security.core.plugin.ResultPlugin">
             <property name="dialect" value="MySQL"/>
         </plugin>
     </plugins>

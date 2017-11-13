@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.laile.volcano.core.dao.auth.admin.AdminDAO">
+<mapper namespace="com.laile.security.core.dao.auth.admin.AdminDAO">
     
-    <resultMap id="BaseResultMap" type="com.laile.volcano.core.model.auth.admin.Admin">
+    <resultMap id="BaseResultMap" type="com.laile.security.core.model.auth.admin.Admin">
         <id column="id" jdbcType="INTEGER" property="id" />
         <result column="admin_name" jdbcType="VARCHAR" property="adminName" />
         <result column="password" jdbcType="VARCHAR" property="password" />
@@ -65,7 +65,7 @@
         where id = #{id,jdbcType=INTEGER}
     </delete>
     
-    <insert id="insert" parameterType="com.laile.volcano.core.model.auth.admin.Admin" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insert" parameterType="com.laile.security.core.model.auth.admin.Admin" useGeneratedKeys="true" keyProperty="id">
         insert into t_admin (id, admin_name, password, 
             real_name, head_pic, login_error_count, 
             login_error_time, last_login_time, update_by, 
@@ -82,7 +82,7 @@
             )
     </insert>
     
-    <insert id="insertSelective" parameterType="com.laile.volcano.core.model.auth.admin.Admin">
+    <insert id="insertSelective" parameterType="com.laile.security.core.model.auth.admin.Admin">
         insert into t_admin
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -198,7 +198,7 @@
         </trim>
     </insert>
     
-    <update id="updateByPrimaryKeySelective" parameterType="com.laile.volcano.core.model.auth.admin.Admin">
+    <update id="updateByPrimaryKeySelective" parameterType="com.laile.security.core.model.auth.admin.Admin">
         update t_admin
         <set>
             <if test="adminName != null">
@@ -256,7 +256,7 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
     
-    <update id="updateByPrimaryKey" parameterType="com.laile.volcano.core.model.auth.admin.Admin">
+    <update id="updateByPrimaryKey" parameterType="com.laile.security.core.model.auth.admin.Admin">
         update t_admin
         set admin_name = #{adminName,jdbcType=VARCHAR},
             password = #{password,jdbcType=VARCHAR},
@@ -512,7 +512,7 @@
 
 
     <!--管理员列表-->
-    <resultMap id="AdminVoResult" type="com.laile.volcano.core.vo.admin.AdminVo" extends="BaseResultMap">
+    <resultMap id="AdminVoResult" type="com.laile.security.core.vo.admin.AdminVo" extends="BaseResultMap">
         <result column="roleCode" jdbcType="VARCHAR" property="roleCode" />
         <result column="roleName" jdbcType="VARCHAR" property="roleName" />
     </resultMap>

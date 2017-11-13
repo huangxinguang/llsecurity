@@ -44,8 +44,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">描述</label>
         <div class="layui-input-block">
-            <textarea placeholder="请输入描述内容" class="layui-textarea"  name="remark" id="area_editor">
-            </textarea>
+            <textarea placeholder="请输入描述内容" class="layui-textarea"  name="remark"></textarea>
         </div>
     </div>
     <div class="layui-form-item">
@@ -74,21 +73,13 @@
     var editorIndex;
     layui.config({
         base : "static/js/"
-    }).use(['form','layer','jquery','layedit','upload'],function(){
+    }).use(['form','layer','jquery'],function(){
         var form = layui.form(),
-            layedit = layui.layedit,
             layer = layui.layer;
         $ = layui.jquery;
 
 
-        //创建一个编辑器 ,自定义工具栏
-        editorIndex = layedit.build('area_editor', {
-            tool: ['strong', 'italic','underline','del','link','|', 'unlink', '|', 'left', 'center', 'right']
-            ,height: 200
-        });
-
         form.on('submit(addUser)',function(data){
-            layedit.sync(editorIndex);
             var form = new FormData($("#data-form")[0]);
 
             var menuIds = onCheck();

@@ -1,6 +1,6 @@
 form input.layui-input[disabled]{ background:#f2f2f2; color:#595963!important; }
-.user_left{ width:55%; float: left; margin:20px 0 0 5%; }
-.user_right{ width:25%; float: left; margin:20px 0 0 5%; text-align: center; }
+.user_left{ width:65%; float: left; margin:20px 0 0 5%; }
+.user_right{ width:15%; float: left; margin:20px 0 0 5%; text-align: center; }
 .user_right p{ margin:10px 0 25px; font-size: 12px; text-align: center; color: #FF5722;}
 .user_right img#userFace{ width:200px; height:200px; }
 .layui-table,.layui-table th{ text-align:center; }

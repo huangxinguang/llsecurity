@@ -12,7 +12,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>火焰山后台管理</title>
+    <title>后台管理</title>
     <meta name="renderer" content="webkit"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta http-equiv="Access-Control-Allow-Origin" content="*"/>
@@ -30,7 +30,7 @@
     <!-- 顶部 -->
     <div class="layui-header header">
         <div class="layui-main">
-            <a href="/index" class="logo">火焰山后台管理</a>
+            <a href="/index" class="logo">后台管理</a>
             <!-- 显示/隐藏菜单 -->
             <a href="javascript:;" class="iconfont hideMenu icon-menu1"></a>
 

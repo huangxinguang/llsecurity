@@ -69,9 +69,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label">备注</label>
             <div class="layui-input-block">
-            <textarea placeholder="请输入备注" class="layui-textarea" name="remark" id="area_editor">
-                ${admin.remark}
-            </textarea>
+            <textarea placeholder="请输入备注" class="layui-textarea" name="remark">${admin.remark}</textarea>
             </div>
         </div>
     </div>
@@ -104,26 +102,11 @@
     var editorIndex;
     layui.config({
         base : "static/js/"
-    }).use(['form','layer','upload','jquery','layedit'],function(){
+    }).use(['form','layer','upload','jquery'],function(){
         var form = layui.form(),
-            layedit = layui.layedit,
             layer = layui.layer;
         $ = layui.jquery;
 
-        layui.upload({
-            url: 'file/getJson.do',
-            method: 'post',
-            success: function(res){
-                //$("#pic").attr("src", res.url)
-                layer.msg("success");
-            }
-        });
-
-        //创建一个编辑器 ,自定义工具栏
-        editorIndex = layedit.build('area_editor', {
-            tool: [ 'left', 'center', 'right']
-            ,height: 100
-        });
 
         //自定义验证规则
         form.verify({
@@ -141,7 +124,6 @@
         });
 
         form.on('submit(addUser)',function(data){
-            layedit.sync(editorIndex);
             var form = new FormData($("#data-form")[0]);
             $.ajax({
                 url: 'admin/saveOrUpdate.do',

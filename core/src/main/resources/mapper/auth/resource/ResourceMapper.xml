@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.laile.volcano.core.dao.auth.resource.ResourceDAO">
+<mapper namespace="com.laile.security.core.dao.auth.resource.ResourceDAO">
     
-    <resultMap id="BaseResultMap" type="com.laile.volcano.core.model.auth.resource.Resource">
+    <resultMap id="BaseResultMap" type="com.laile.security.core.model.auth.resource.Resource">
         <id column="id" jdbcType="INTEGER" property="id" />
         <result column="parent_id" jdbcType="INTEGER" property="parentId" />
         <result column="code" jdbcType="VARCHAR" property="code" />
@@ -95,7 +95,7 @@
         where id = #{id,jdbcType=INTEGER}
     </delete>
     
-    <insert id="insert" parameterType="com.laile.volcano.core.model.auth.resource.Resource">
+    <insert id="insert" parameterType="com.laile.security.core.model.auth.resource.Resource">
         insert into t_resource (id, parent_id, code, 
             name, url, type, 
             status, sort, path, 
@@ -110,7 +110,7 @@
             )
     </insert>
     
-    <insert id="insertSelective" parameterType="com.laile.volcano.core.model.auth.resource.Resource">
+    <insert id="insertSelective" parameterType="com.laile.security.core.model.auth.resource.Resource">
         insert into t_resource
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -208,7 +208,7 @@
         </trim>
     </insert>
     
-    <update id="updateByPrimaryKeySelective" parameterType="com.laile.volcano.core.model.auth.resource.Resource">
+    <update id="updateByPrimaryKeySelective" parameterType="com.laile.security.core.model.auth.resource.Resource">
         update t_resource
         <set>
             <if test="parentId != null">
@@ -257,7 +257,7 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
     
-    <update id="updateByPrimaryKey" parameterType="com.laile.volcano.core.model.auth.resource.Resource">
+    <update id="updateByPrimaryKey" parameterType="com.laile.security.core.model.auth.resource.Resource">
         update t_resource
         set parent_id = #{parentId,jdbcType=INTEGER},
             code = #{code,jdbcType=VARCHAR},

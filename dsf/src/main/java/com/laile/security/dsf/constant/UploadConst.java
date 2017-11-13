@@ -11,6 +11,4 @@ public class UploadConst {
     public static String FILE_SERVER = PropertyPlaceholderConfigurer.getProperty("fileServer");
 
     public static String COMMON_PATH = PropertyPlaceholderConfigurer.getProperty("commonPath");
-
-    public static String API_SERVER = PropertyPlaceholderConfigurer.getProperty("apiServer");
 }
