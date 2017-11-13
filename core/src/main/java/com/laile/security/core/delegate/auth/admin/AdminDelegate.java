@@ -112,6 +112,9 @@ public class AdminDelegate extends AbstractDelegate<Admin,Integer> {
         Admin admin = this.getAdmin(name);
 
         if (!StringUtils.equals(password, admin.getPassword())) {
+            if(admin.getLimitCount().intValue() - admin.getLoginErrorCount().intValue() == 0) {
+                throw new TipsException("当天密码错误次数超过限制，请24小时之后重试");
+            }
             if (admin.getLastLoginTime() == null || !DateUtil.isSameDay(DateUtil.parse(DateUtil.format(admin.getLastLoginTime(), DateUtil.YYYY_MM_DD)),
                     DateUtil.fomatDate(DateUtil.getDay()))) {
                     admin.setLoginErrorCount(admin.getLoginErrorCount() * 0+ 1);
@@ -119,9 +122,6 @@ public class AdminDelegate extends AbstractDelegate<Admin,Integer> {
             } else {
                 admin.setLoginErrorCount(admin.getLoginErrorCount() + 1);
                 adminDAO.addLoginErrorTime(admin.getAdminName(), 1);
-            }
-            if(admin.getLimitCount().intValue() - admin.getLoginErrorCount().intValue() == 0) {
-                throw new TipsException("当天密码错误次数超过限制，请24小时之后重试");
             }
             throw new TipsException("用户名/密码错误,当天可尝试登录剩余次数[" + (admin.getLimitCount() - admin.getLoginErrorCount()) + "]次");
         } else {
