@@ -1,7 +1,7 @@
 package com.laile.security.admin.controller.auth;
 
 import com.laile.esf.common.util.Page;
-import com.laile.security.admin.controller.AbstractController;
+import com.laile.security.admin.controller.BaseController;
 import com.laile.security.admin.util.IPUtils;
 import com.laile.security.admin.util.R;
 import com.laile.security.core.dto.AdminDto;
@@ -29,7 +29,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping(value = "/admin")
-public class AdminController extends AbstractController {
+public class AdminController extends BaseController {
 
     @Autowired
     private IAdminService adminService;

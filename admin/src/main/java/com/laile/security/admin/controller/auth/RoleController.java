@@ -1,7 +1,7 @@
 package com.laile.security.admin.controller.auth;
 
 import com.laile.esf.common.util.Page;
-import com.laile.security.admin.controller.AbstractController;
+import com.laile.security.admin.controller.BaseController;
 import com.laile.security.admin.util.R;
 import com.laile.security.core.model.auth.role.Role;
 import com.laile.security.service.auth.role.IRoleService;
@@ -18,7 +18,7 @@ import java.util.Date;
  */
 @Controller
 @RequestMapping(value = "/role")
-public class RoleController extends AbstractController {
+public class RoleController extends BaseController {
 
     @Autowired
     private IRoleService roleService;

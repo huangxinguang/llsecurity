@@ -2,7 +2,7 @@ package com.laile.security.admin.controller.login;
 
 
 import com.laile.security.admin.constant.WebConstant;
-import com.laile.security.admin.controller.AbstractController;
+import com.laile.security.admin.controller.BaseController;
 import com.laile.security.admin.util.CaptchaUtil;
 import com.laile.security.admin.util.Jurisdiction;
 import com.laile.security.admin.util.R;
@@ -27,7 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 @RequestMapping
-public class LoginController extends AbstractController {
+public class LoginController extends BaseController {
 
     @Autowired
     private IAdminService adminService;
