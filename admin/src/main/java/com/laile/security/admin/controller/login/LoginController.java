@@ -48,7 +48,7 @@ public class LoginController extends BaseController {
         Admin admin = adminService.getAdmin(adminName);
 
         if (admin == null) {
-            throw new TipsException("用户不存在");
+            throw new TipsException("用户名或密码不正确");
         }
         admin = adminService.login(admin.getAdminName(), CipherHelper.encryptPassword(password, ConfigConst.SOLT));
 

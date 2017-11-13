@@ -19,6 +19,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -108,28 +109,23 @@ public class AdminDelegate extends AbstractDelegate<Admin,Integer> {
     }
 
     public Admin login(String name,String password) {
-        Admin admin = adminDAO.login(name, password);
-        if (admin == null) {
-            throw new TipsException("用户名或密码错误");
-        }
+        Admin admin = this.getAdmin(name);
+
         if (!StringUtils.equals(password, admin.getPassword())) {
-            if (DateUtil.isSameDay(DateUtil.parse(DateUtil.format(admin.getLastLoginTime(), DateUtil.YYYY_MM_DD)),
+            if (admin.getLastLoginTime() == null || !DateUtil.isSameDay(DateUtil.parse(DateUtil.format(admin.getLastLoginTime(), DateUtil.YYYY_MM_DD)),
                     DateUtil.fomatDate(DateUtil.getDay()))) {
-                try {
-                    admin.setLoginErrorCount(admin.getLoginErrorCount() + 1);
+                    admin.setLoginErrorCount(admin.getLoginErrorCount() * 0+ 1);
                     adminDAO.addLoginErrorTime(admin.getAdminName(), 1);
-                } catch (Exception e) {
-                    logger.error("update login err Time error", e);
-                }
             } else {
-                adminDAO.addLoginErrorTime(admin.getAdminName(), admin.getLoginErrorCount() * -1 + 1);
-                admin.setLoginErrorCount(1);
+                admin.setLoginErrorCount(admin.getLoginErrorCount() + 1);
+                adminDAO.addLoginErrorTime(admin.getAdminName(), 1);
+            }
+            if(admin.getLimitCount().intValue() - admin.getLoginErrorCount().intValue() == 0) {
+                throw new TipsException("当天密码错误次数超过限制，请24小时之后重试");
             }
             throw new TipsException("用户名/密码错误,当天可尝试登录剩余次数[" + (admin.getLimitCount() - admin.getLoginErrorCount()) + "]次");
         } else {
-            if (admin.getLoginErrorCount() > 0) {
-                adminDAO.addLoginErrorTime(admin.getAdminName(), admin.getLoginErrorCount() * -1);
-            }
+            adminDAO.resetLoginErrorTime(admin.getAdminName());
         }
         return admin;
     }

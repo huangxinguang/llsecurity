@@ -70,7 +70,7 @@
                 data: {"adminName":data.field.adminName,"password":data.field.password,"captchaCode":data.field.captchaCode},
                 success: function(r){
                     if(r.code == 0){
-                        window.location.href = "index";
+                        window.top.location.href = "index";
                     }else{
                         layer.msg(r.msg, {icon: 5});
                     }

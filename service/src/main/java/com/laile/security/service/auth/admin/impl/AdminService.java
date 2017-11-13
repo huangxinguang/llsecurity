@@ -51,7 +51,7 @@ public class AdminService extends AbstractService<Admin,Integer> implements IAdm
     public void changePwd(Integer id, String password, String newPassword) {
         Admin admin = adminDelegate.selectByPrimaryKey(id);
         if(!admin.getPassword().equalsIgnoreCase(CipherHelper.encryptPassword(password, ConfigConst.SOLT))) {
-            throw new TipsException("亲，原密码不正确。");
+            throw new TipsException("原密码不正确");
         }else {
             Admin newAdmin = new Admin();
             newAdmin.setId(admin.getId());
@@ -64,7 +64,7 @@ public class AdminService extends AbstractService<Admin,Integer> implements IAdm
     public void unlock(Integer id,String password) {
         Admin admin = adminDelegate.selectByPrimaryKey(id);
         if(!admin.getPassword().equalsIgnoreCase(CipherHelper.encryptPassword(password, ConfigConst.SOLT))) {
-            throw new TipsException("密码不正确！");
+            throw new TipsException("密码不正确");
         }
     }
 
