@@ -1,5 +1,6 @@
 package com.laile.security.service.auth.resource.impl;
 
+import com.laile.esf.common.util.Page;
 import com.laile.security.core.delegate.AbstractDelegate;
 import com.laile.security.core.delegate.auth.resource.ResourceDelegate;
 import com.laile.security.core.delegate.auth.role.RoleResourceDelegate;
@@ -118,8 +119,48 @@ public class ResourceService extends AbstractService<Resource,Integer> implement
     }
 
     @Override
+    public List<TreeNode> getSelectedResourceTree(Integer resourceId) {
+        Resource resource = resourceDelegate.selectByPrimaryKey(resourceId);
+        //加载所有节点
+        List<Resource> resourceList = resourceDelegate.getAllMenuList();
+        //所有节点
+        List<TreeNode> allNodeList = new ArrayList<>();
+
+        TreeNode treeNode;
+        for(Resource item : resourceList) {
+
+            treeNode = new TreeNode();
+            treeNode.setId(item.getId());
+            treeNode.setName(item.getName());
+            if(item.getCode().equals(resource.getCode())) {
+                treeNode.setChecked(true);
+            }else {
+                treeNode.setChecked(false);
+            }
+            treeNode.setOpen(true);
+            treeNode.setpId(item.getParentId().intValue() == -1 ? 0 : item.getParentId());
+            allNodeList.add(treeNode);
+        }
+        return allNodeList;
+    }
+
+    @Override
     public Set<String> queryResourceCodes(Integer id) {
         return resourceDelegate.queryResourceCodes(id);
+    }
+
+    @Override
+    public Page<Resource> queryResourceListPage(Integer currentPage, Integer showCount, String searchKey) {
+        return resourceDelegate.queryResourceListPage(currentPage,showCount,searchKey);
+    }
+
+    @Override
+    public void saveOrUpdate(Resource resource) {
+        if (resource.getId() == null) {
+            resourceDelegate.insertSelective(resource);
+        } else {
+            resourceDelegate.updateByPrimaryKeySelective(resource);
+        }
     }
 
 

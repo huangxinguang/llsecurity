@@ -1,6 +1,7 @@
 package com.laile.security.admin.controller.auth;
 
 import com.laile.esf.common.util.Page;
+import com.laile.security.admin.constant.WebConstant;
 import com.laile.security.admin.controller.BaseController;
 import com.laile.security.admin.util.IPUtils;
 import com.laile.security.admin.util.R;
@@ -115,7 +116,7 @@ public class AdminController extends BaseController {
             admin.setLoginErrorCount(0);
             admin.setCreateIp(IPUtils.getIpAddr(request));
             admin.setUpdatePwdCount(0);
-            admin.setLimitCount(ConfigConst.LOGIN_LIMIT);
+            admin.setLimitCount(WebConstant.LOGIN_LIMIT_COUNT);
             admin.setPassword(CipherHelper.encryptPassword(admin.getPassword(), ConfigConst.SOLT));
             admin.setUpdateBy(getSessionUser().getAdminName());
             admin.setUpdateTime(new Date());

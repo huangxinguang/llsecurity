@@ -110,11 +110,11 @@ public class AdminDelegate extends AbstractDelegate<Admin,Integer> {
 
     public Admin login(String name,String password) {
         Admin admin = this.getAdmin(name);
+        if(admin.getLimitCount().intValue() - admin.getLoginErrorCount().intValue() == 0) {
+            throw new TipsException("当天密码错误次数超过限制，请24小时之后重试");
+        }
 
         if (!StringUtils.equals(password, admin.getPassword())) {
-            if(admin.getLimitCount().intValue() - admin.getLoginErrorCount().intValue() == 0) {
-                throw new TipsException("当天密码错误次数超过限制，请24小时之后重试");
-            }
             if (admin.getLastLoginTime() == null || !DateUtil.isSameDay(DateUtil.parse(DateUtil.format(admin.getLastLoginTime(), DateUtil.YYYY_MM_DD)),
                     DateUtil.fomatDate(DateUtil.getDay()))) {
                     admin.setLoginErrorCount(admin.getLoginErrorCount() * 0+ 1);

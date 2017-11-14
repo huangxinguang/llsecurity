@@ -134,9 +134,9 @@
         $.ajax({
             async : false,
             cache : false,
-            type : 'POST',
+            type : 'get',
             dataType : 'json',
-            url : "menu/roleTree.do",
+            url : "resource/resourceTree.do",
             error : function() {
                 layer.msg('亲，请求失败！');
             },

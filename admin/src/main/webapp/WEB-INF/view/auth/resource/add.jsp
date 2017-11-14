@@ -12,7 +12,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>角色编辑</title>
+    <title>资源添加</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -25,33 +25,59 @@
     <link rel="stylesheet" href="static/btree/css/bootstrapStyle/bootstrapStyle.css" type="text/css">
 </head>
 <body class="childrenBody">
-<form id="data-form" class="layui-form" style="width:80%;" onsubmit="return false;" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="id" value="${role.id}">
+<form id="data-form" class="layui-form" style="width:80%;">
 
     <div class="layui-form-item">
-        <label class="layui-form-label">角色名称</label>
+        <label class="layui-form-label">资源名称</label>
         <div class="layui-input-block">
-            <input type="text" class="layui-input" value="${role.roleName}" name="roleName" lay-verify="required">
+            <input type="text" class="layui-input"  name="name" lay-verify="required">
+        </div>
+
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">资源编码</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="code" lay-verify="required">
         </div>
     </div>
 
     <div class="layui-form-item">
-        <label class="layui-form-label">角色编码</label>
-        <div class="layui-input-block">
-            <input type="text" class="layui-input" value="${role.roleCode}"  name="roleCode" readonly lay-verify="required">
-        </div>
-    </div>
-
-    <div class="layui-form-item">
-        <label class="layui-form-label">描述</label>
-        <div class="layui-input-block">
-            <textarea placeholder="请输入描述内容" class="layui-textarea"  name="remark">${role.remark}</textarea>
-        </div>
-    </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">权限</label>
+        <label class="layui-form-label">父节点</label>
         <div class="layui-input-block">
             <ul id="roleTree" class="ztree"></ul>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">url</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="url" lay-verify="required">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">类型</label>
+        <div class="layui-input-inline">
+            <select name="type" lay-filter="type" lay-verify="required">
+                <option value=""></option>
+                <option value="1">菜单</option>
+                <option value="2">按钮</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">排序</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="sort" lay-verify="required">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">图标</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="icon" lay-verify="required">
         </div>
     </div>
 
@@ -71,7 +97,6 @@
 <script type="text/javascript" src="static/btree/js/jquery.ztree.exedit.js"></script>
 <script type="text/javascript">
     var $;
-    var editorIndex;
     layui.config({
         base : "static/js/"
     }).use(['form','layer','jquery'],function(){
@@ -79,12 +104,13 @@
             layer = layui.layer;
         $ = layui.jquery;
 
+
         form.on('submit(addUser)',function(data){
             var form = new FormData($("#data-form")[0]);
 
-            var menuIds = onCheck();
+            var parentId = onCheck();
             $.ajax({
-                url: "role/saveOrUpdate.do?menuIds="+menuIds,
+                url: "resource/saveOrUpdate.do?parentId="+parentId,
                 type: 'POST',
                 dataType: "json",
                 data: form,
@@ -93,7 +119,7 @@
                 contentType: false,
                 success: function (r) {
                     if(r.code==0) {
-                        top.layer.msg("保存成功！");
+                        top.layer.msg("添加成功！");
                         layer.closeAll("iframe");
                         //刷新父页面
                         parent.location.reload();
@@ -102,7 +128,6 @@
                     }
                 }
             });
-            layer.close(index);
             return false;
         });
 
@@ -114,10 +139,13 @@
         view: {
             addHoverDom: false,
             removeHoverDom: false,
-            selectedMulti: true
+            selectedMulti: false
         },
         check: {
-            enable: true
+            enable: true,
+            chkStyle: "radio",  //单选框
+            radioType: "all",
+            chkboxType:  { "Y": "", "N": "" }
         },
         data: {
             simpleData: {
@@ -137,8 +165,7 @@
             cache : false,
             type : 'get',
             dataType : 'json',
-            data : {"id":${role.id}},
-            url : "resource/selectedResourceTree.do",
+            url : "resource/resourceTree.do",
             error : function() {
                 layer.msg('亲，请求失败！');
             },
@@ -152,11 +179,7 @@
     function onCheck() {
         var treeObj = $.fn.zTree.getZTreeObj("roleTree");
         var nodes = treeObj.getCheckedNodes(true);
-        var idArray = [];
-        for (var i = 0; i < nodes.length; i++) {
-            idArray.push(nodes[i].id);
-        }
-        return idArray;
+        return nodes[0].id;
     }
 
 </script>
