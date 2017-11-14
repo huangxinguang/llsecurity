@@ -138,7 +138,7 @@
             type : 'get',
             dataType : 'json',
             data : {"id":${role.id}},
-            url : "resource/selectedResourceTree.do",
+            url : "resource/selectedRoleTree.do",
             error : function() {
                 layer.msg('亲，请求失败！');
             },
