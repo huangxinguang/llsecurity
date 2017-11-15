@@ -39,7 +39,14 @@ public class ResourceService extends AbstractService<Resource,Integer> implement
     }
 
     public List<MenuVo> getMenuTree(Integer id) {
-        List<Resource> allMenuList = resourceDelegate.queryResource(id);
+        List<Resource> allMenuList;
+
+        if(id.intValue() == 1) {//超级管理员
+            allMenuList = resourceDelegate.getAllMenuList();
+        }else {
+            allMenuList = resourceDelegate.queryResource(id);
+        }
+
         if(CollectionUtils.isEmpty(allMenuList)) {
             return null;
         }

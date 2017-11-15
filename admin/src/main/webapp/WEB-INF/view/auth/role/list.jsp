@@ -70,14 +70,16 @@
                     <td>${item.roleName}</td>
                     <td>${item.remark}</td>
                     <td><fmt:formatDate value="${item.createTime}" pattern="yyyy-MM-dd hh:mm:ss"/></td>
-                    <td>
-                        <a class="layui-btn layui-btn-mini do_edit" data-id="${item.id}">
-                            <i class="iconfont icon-edit"></i> 编辑
-                        </a>
-                        <a class="layui-btn layui-btn-danger layui-btn-mini do_del" data-id="${item.id}">
-                            <i class="layui-icon">&#xe640;</i> 删除
-                        </a>
-                    </td>
+                    <c:if test="${item.id!=1}">
+                        <td>
+                            <a class="layui-btn layui-btn-mini do_edit" data-id="${item.id}">
+                                <i class="iconfont icon-edit"></i> 编辑
+                            </a>
+                            <a class="layui-btn layui-btn-danger layui-btn-mini do_del" data-id="${item.id}">
+                                <i class="layui-icon">&#xe640;</i> 删除
+                            </a>
+                        </td>
+                    </c:if>
                 </tr>
             </c:forEach>
 

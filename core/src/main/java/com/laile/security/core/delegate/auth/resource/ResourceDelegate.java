@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -46,7 +47,11 @@ public class ResourceDelegate extends AbstractDelegate<Resource,Integer> {
     }
 
     public Set<String> queryResourceCodes(Integer id) {
-        return resourceDAO.queryResourceCodes(id);
+        if(id.intValue() == 1) {//超级管理员
+            return resourceDAO.queryAllResourceCodes();
+        }else {
+            return resourceDAO.queryResourceCodes(id);
+        }
     }
 
     public List<Resource> queryResource(Integer id) {

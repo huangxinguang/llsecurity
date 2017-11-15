@@ -77,12 +77,14 @@
                     <td>${item.mobile}</td>
                     <td>正常</td>
                     <td>
-                        <a class="layui-btn layui-btn-mini do_edit" data-id="${item.id}">
-                            <i class="iconfont icon-edit"></i> 编辑
-                        </a>
-                        <a class="layui-btn layui-btn-danger layui-btn-mini do_del" data-id="${item.id}">
-                            <i class="layui-icon">&#xe640;</i> 删除
-                        </a>
+                        <c:if test="${item.id!=1}">
+                            <a class="layui-btn layui-btn-mini do_edit" data-id="${item.id}">
+                                <i class="iconfont icon-edit"></i> 编辑
+                            </a>
+                            <a class="layui-btn layui-btn-danger layui-btn-mini do_del" data-id="${item.id}">
+                                <i class="layui-icon">&#xe640;</i> 删除
+                            </a>
+                        </c:if>
                     </td>
                 </tr>
             </c:forEach>

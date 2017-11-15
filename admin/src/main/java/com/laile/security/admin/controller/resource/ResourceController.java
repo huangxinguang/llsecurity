@@ -78,10 +78,12 @@ public class ResourceController extends BaseController {
     public Object saveOrUpdate(Resource resource) {
         if(resource.getId() == null) {
             resource.setLeaf(1);
+            resource.setParentId(resource.getParentId() == null ? -1 : resource.getParentId());
             resource.setCreateBy(getSessionUser().getAdminName());
             resource.setCreateTime(new Date());
             resource.setStatus(1);
         }else {
+            resource.setParentId(resource.getParentId() == null ? -1 : resource.getParentId());
             resource.setUpdateBy(getSessionUser().getAdminName());
             resource.setUpdateTime(new Date());
         }

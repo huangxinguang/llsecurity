@@ -67,7 +67,13 @@
           and ar.admin_id = #{id,jdbcType=INTEGER}
     </select>
 
-    <select id="queryResourceCodes" parameterType="java.lang.Integer" resultType="java.util.Set">
+    <select id="queryAllResourceCodes" parameterType="java.lang.Integer" resultType="java.lang.String">
+        select
+        rs.code
+        from t_resource rs
+    </select>
+
+    <select id="queryResourceCodes" parameterType="java.lang.Integer" resultType="java.lang.String">
         select
         role_code
         from t_resource rs,t_role_resource rr,t_role ro,t_admin_role ar

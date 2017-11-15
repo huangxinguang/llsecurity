@@ -2,9 +2,11 @@ package com.laile.security.core.delegate.auth.role;
 
 import com.laile.esf.common.util.Page;
 import com.laile.security.core.dao.IBaseDAO;
+import com.laile.security.core.dao.auth.admin.AdminRoleDAO;
 import com.laile.security.core.dao.auth.role.RoleDAO;
 import com.laile.security.core.dao.auth.role.RoleResourceDAO;
 import com.laile.security.core.delegate.AbstractDelegate;
+import com.laile.security.core.model.auth.admin.AdminRole;
 import com.laile.security.core.model.auth.role.Role;
 import com.laile.security.core.model.auth.role.RoleResource;
 import com.laile.security.core.plugin.SqlCondition;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -27,6 +30,9 @@ public class RoleDelegate extends AbstractDelegate<Role,Integer> {
 
     @Autowired
     private RoleDAO roleDAO;
+
+    @Autowired
+    private AdminRoleDAO adminRoleDAO;
 
     @Autowired
     private RoleResourceDAO roleResourceDAO;
@@ -51,6 +57,15 @@ public class RoleDelegate extends AbstractDelegate<Role,Integer> {
     }
 
     public Set<String> queryAdminRoleCodes(Integer id) {
+        if(id.intValue() == 1) {//超级管理员
+            AdminRole adminRole = new AdminRole();
+            adminRole.setAdminId(id);
+            adminRole = adminRoleDAO.selectOne(adminRole);
+            Role role = roleDAO.selectByPrimaryKey(adminRole.getRoleId());
+            Set<String> superManagerCodeSet = new HashSet<>();
+            superManagerCodeSet.add(role.getRoleCode());
+            return superManagerCodeSet;
+        }
         return roleDAO.queryAdminRoleCodes(id);
     }
 
