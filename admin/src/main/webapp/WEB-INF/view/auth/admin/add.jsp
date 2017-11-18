@@ -21,10 +21,10 @@
     <meta name="format-detection" content="telephone=no">
     <link rel="stylesheet" href="static/layui/css/layui.css" media="all" />
     <link rel="stylesheet" href="static/css/common.css" media="all" />
-    <link rel="stylesheet" href="static/css/user.css" media="all" />
+    <%--<link rel="stylesheet" href="static/css/user.css" media="all" />--%>
 </head>
 <body class="childrenBody">
-<form id="data-form" class="layui-form" style="width:80%;" onsubmit="return false;" method="post" enctype="multipart/form-data">
+<form id="data-form" class="layui-form" style="width:80%;">
     <input type="hidden" name="id" value="${admin.id}"/>
     <div class="user_left">
         <div class="layui-form-item">
@@ -58,6 +58,20 @@
                 <input type="password" name="password" value="${admin.password}"  lay-verify="required|password" class="layui-input realName">
             </div>
         </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input type="file" name="file" style="display: none;" lay-verify="required" onchange="previewImage(this)" id="previewImg" />
+            </div>
+
+            <div class="layui-input-block">
+                <label class="layui-form-label">上传头像</label>
+                <div class="layui-input-block">
+                    <div id="preview">
+                        <img id="pic" border="0" src="static/images/photo_icon.png" width="100" height="100" onclick="$('#previewImg').click();">
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">手机号码</label>
@@ -74,7 +88,7 @@
         </div>
     </div>
 
-    <div class="user_right">
+   <%-- <div class="user_right">
         <div class="layui-input-block">
             <input type="file" name="file" style="display: none;" lay-verify="required" onchange="previewImage(this)" id="previewImg" />
         </div>
@@ -85,7 +99,7 @@
                 <img id="pic" border="0" src="static/images/photo_icon.png" width="100" height="100" onclick="$('#previewImg').click();">
             </div>
         </div>
-    </div>
+    </div>--%>
 
     <div class="layui-form-item" style="margin-left: 5%;">
         <div class="layui-input-block">

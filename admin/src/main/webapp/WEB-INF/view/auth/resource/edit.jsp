@@ -189,6 +189,9 @@
     function onCheck() {
         var treeObj = $.fn.zTree.getZTreeObj("roleTree");
         var nodes = treeObj.getCheckedNodes(true);
+        if(nodes.length == 0) {
+            return -1;
+        }
         return nodes[0].id;
     }
 

@@ -16,40 +16,7 @@
 </head>
 <body class="childrenBody">
 <div class="panel_box row">
-    <div class="panel col">
-        <a href="javascript:;" data-url="photograph/handlingList.do">
-            <div class="panel_icon">
-                <i class="layui-icon" data-icon="&#xe64a;">&#xe64a;</i>
-            </div>
-            <div class="panel_word photograph">
-                <span></span>
-                <cite>待处理摄影</cite>
-            </div>
-        </a>
-    </div>
 
-    <div class="panel col">
-        <a href="javascript:;" data-url="user/list.do">
-            <div class="panel_icon" style="background-color:#009688;">
-                <i class="layui-icon" data-icon="&#xe613;">&#xe613;</i>
-            </div>
-            <div class="panel_word userAll">
-                <span></span>
-                <cite>注册用户总数</cite>
-            </div>
-        </a>
-    </div>
-    <div class="panel col max_panel">
-        <a href="javascript:;" data-url="article/list.do">
-            <div class="panel_icon" style="background-color:#2F4056;">
-                <i class="iconfont icon-text" data-icon="icon-text"></i>
-            </div>
-            <div class="panel_word articleAll">
-                <span></span>
-                <cite>文章总数</cite>
-            </div>
-        </a>
-    </div>
 </div>
 
 <script type="text/javascript" src="static/layui/layui.js"></script>

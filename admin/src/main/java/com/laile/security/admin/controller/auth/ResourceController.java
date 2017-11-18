@@ -1,4 +1,4 @@
-package com.laile.security.admin.controller.resource;
+package com.laile.security.admin.controller.auth;
 
 import com.laile.esf.common.util.Page;
 import com.laile.security.admin.controller.BaseController;

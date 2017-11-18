@@ -139,7 +139,7 @@ public class ResourceService extends AbstractService<Resource,Integer> implement
             treeNode = new TreeNode();
             treeNode.setId(item.getId());
             treeNode.setName(item.getName());
-            if(item.getCode().equals(resource.getCode())) {
+            if(item.getId().intValue() == resource.getParentId().intValue()) {
                 treeNode.setChecked(true);
             }else {
                 treeNode.setChecked(false);

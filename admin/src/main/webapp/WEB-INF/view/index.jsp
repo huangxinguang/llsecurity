@@ -121,7 +121,7 @@
 
     <!-- 底部 -->
     <div class="layui-footer footer">
-        <p>火焰山国家地质公园 copyright @2017 -2018 </p>
+        <p>copyright @2017 -2018 </p>
     </div>
 </div>
 
