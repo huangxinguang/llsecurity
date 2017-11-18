@@ -98,8 +98,8 @@
     layui.config({
         base : "static/js/"
     }).use(['form','layer','jquery','laypage'],function() {
-        var form = layui.form(),
-            layer = parent.layer === undefined ? layui.layer : parent.layer,
+        var form = layui.form,
+            layer = layui.layer,
             laypage = layui.laypage,
             $ = layui.jquery;
 
