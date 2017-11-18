@@ -58,15 +58,6 @@
 
             <!-- 顶部右侧菜单 -->
             <ul class="layui-nav top_menu">
-                <li class="layui-nav-item" mobile>
-                    <a href="javascript:;" class="mobileAddTab" data-url="admin/changePwdPage.do"><i class="iconfont icon-shezhi1" data-icon="icon-shezhi1"></i><cite>设置</cite></a>
-                </li>
-                <li class="layui-nav-item" mobile>
-                    <a href="loginOut.do" class="signOut"><i class="iconfont icon-loginout"></i> 退出</a>
-                </li>
-                <li class="layui-nav-item lockcms" pc>
-                    <a href="javascript:;"><i class="iconfont icon-lock1"></i><cite>锁屏</cite></a>
-                </li>
                 <li class="layui-nav-item" pc>
                     <a href="javascript:;">
                         <img src="file/download/${admin.headPic}" class="layui-circle" width="35" height="35">
@@ -75,7 +66,6 @@
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;" data-url="admin/showInfo.do"><i class="iconfont icon-zhanghu" data-icon="icon-zhanghu"></i><cite>个人资料</cite></a></dd>
                         <dd><a href="javascript:;" data-url="admin/changePwdPage.do"><i class="iconfont icon-shezhi1" data-icon="icon-shezhi1"></i><cite>修改密码</cite></a></dd>
-                        <dd><a href="javascript:;" class="changeSkin"><i class="iconfont icon-huanfu"></i><cite>更换皮肤</cite></a></dd>
                         <dd><a href="loginOut.do" class="signOut"><i class="iconfont icon-loginout"></i><cite>退出</cite></a></dd>
                     </dl>
                 </li>

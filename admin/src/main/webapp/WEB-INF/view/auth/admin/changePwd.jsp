@@ -65,7 +65,7 @@
     layui.config({
         base : "static/js/"
     }).use(['form','layer','jquery'],function(){
-        var form = layui.form(),
+        var form = layui.form,
             layer = layui.layer;
         $ = layui.jquery;
 

@@ -98,11 +98,10 @@
 <script type="text/javascript" src="static/btree/js/jquery.ztree.exedit.js"></script>
 <script type="text/javascript">
     var $;
-    var editorIndex;
     layui.config({
         base : "static/js/"
     }).use(['form','layer','jquery'],function(){
-        var form = layui.form(),
+        var form = layui.form,
             layer = layui.layer;
         $ = layui.jquery;
 

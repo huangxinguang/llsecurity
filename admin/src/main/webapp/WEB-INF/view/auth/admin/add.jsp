@@ -58,20 +58,6 @@
                 <input type="password" name="password" value="${admin.password}"  lay-verify="required|password" class="layui-input realName">
             </div>
         </div>
-        <div class="layui-form-item">
-            <div class="layui-input-block">
-                <input type="file" name="file" style="display: none;" lay-verify="required" onchange="previewImage(this)" id="previewImg" />
-            </div>
-
-            <div class="layui-input-block">
-                <label class="layui-form-label">上传头像</label>
-                <div class="layui-input-block">
-                    <div id="preview">
-                        <img id="pic" border="0" src="static/images/photo_icon.png" width="100" height="100" onclick="$('#previewImg').click();">
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">手机号码</label>
@@ -88,7 +74,7 @@
         </div>
     </div>
 
-   <%-- <div class="user_right">
+    <div class="user_right">
         <div class="layui-input-block">
             <input type="file" name="file" style="display: none;" lay-verify="required" onchange="previewImage(this)" id="previewImg" />
         </div>
@@ -99,7 +85,7 @@
                 <img id="pic" border="0" src="static/images/photo_icon.png" width="100" height="100" onclick="$('#previewImg').click();">
             </div>
         </div>
-    </div>--%>
+    </div>
 
     <div class="layui-form-item" style="margin-left: 5%;">
         <div class="layui-input-block">
@@ -113,11 +99,10 @@
 
 <script type="text/javascript">
     var $;
-    var editorIndex;
     layui.config({
         base : "static/js/"
     }).use(['form','layer','upload','jquery'],function(){
-        var form = layui.form(),
+        var form = layui.form,
             layer = layui.layer;
         $ = layui.jquery;
 

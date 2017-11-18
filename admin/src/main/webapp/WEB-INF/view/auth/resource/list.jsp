@@ -120,27 +120,19 @@
     layui.config({
         base : "static/js/"
     }).use(['form','layer','jquery','laypage'],function() {
-        var form = layui.form(),
+        var form = layui.form,
             layer = parent.layer === undefined ? layui.layer : parent.layer,
             laypage = layui.laypage,
             $ = layui.jquery;
 
-        //分页组件
-        laypage({
-            cont: 'page',
-            first: 1,
-            curr: ${page.currentPage},
-            last: ${page.totalPage},
-            prev: '上一页',
-            next: '下一页',
-            skip: true,
-            pages: ${page.totalPage}, //总页数
-            groups: 5,//连续显示分页数
-            jump: function(obj, first){
-                //得到了当前页，用于向服务端请求对应数据
-                var curr = obj.curr;
-                $("#currentPage").val(curr);
-                if(!first) {
+        laypage.render({
+            elem: 'page'
+            ,count: ${page.totalPage} //数据总数，从服务端得到
+            ,curr: ${page.currentPage}
+            ,jump: function(obj, first){
+                $("#currentPage").val(obj.curr);
+                //首次不执行
+                if(!first){
                     $("#searchForm").submit();
                 }
             }

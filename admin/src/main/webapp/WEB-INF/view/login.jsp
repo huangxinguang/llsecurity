@@ -58,8 +58,8 @@
     layui.config({
         base : "static/js/"
     }).use(['form','layer'],function(){
-        var form = layui.form(),
-            layer = parent.layer === undefined ? layui.layer : parent.layer,
+        var form = layui.form,
+            layer = layui.layer,
             $ = layui.jquery;
 
         //登录按钮事件
