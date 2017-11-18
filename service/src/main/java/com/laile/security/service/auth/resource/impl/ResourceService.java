@@ -77,7 +77,7 @@ public class ResourceService extends AbstractService<Resource,Integer> implement
 
     public List<TreeNode> getRoleTree() {
         //加载所有节点
-        List<Resource> resourceList = resourceDelegate.getAllMenuList();
+        List<Resource> resourceList = resourceDelegate.selectAll();
         //所有节点
         List<TreeNode> allNodeList = new ArrayList<>();
 
@@ -97,7 +97,7 @@ public class ResourceService extends AbstractService<Resource,Integer> implement
     @Override
     public List<TreeNode> getSelectedRoleTree(Integer id) {
         //加载所有节点
-        List<Resource> resourceList = resourceDelegate.getAllMenuList();
+        List<Resource> resourceList = resourceDelegate.selectAll();
         //所有节点
         List<TreeNode> allNodeList = new ArrayList<>();
 

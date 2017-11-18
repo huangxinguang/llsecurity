@@ -32,13 +32,6 @@ public class ResourceDelegate extends AbstractDelegate<Resource,Integer> {
     }
 
 
-    public List<Resource> getMenuList(Integer parentId) {
-        SqlCondition condition = new SqlCondition();
-        condition.put(" where type=1 and parent_id=",parentId);
-        List<Resource> resourceList = resourceDAO.selectByCondition(condition);
-        return resourceList;
-    }
-
     public List<Resource> getAllMenuList() {
         SqlCondition condition = new SqlCondition();
         condition.put(" where type=",1);

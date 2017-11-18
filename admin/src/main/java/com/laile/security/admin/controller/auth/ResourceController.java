@@ -31,15 +31,15 @@ public class ResourceController extends BaseController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/resourceTree",method = RequestMethod.GET)
-    public Object resourceTree()  {
-        return resourceService.getRoleTree();
-    }
-
-    @ResponseBody
     @RequestMapping(value = "/selectedRoleTree",method = RequestMethod.GET)
     public Object selectedRoleTree(Integer id)  {
         return resourceService.getSelectedRoleTree(id);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/resourceTree",method = RequestMethod.GET)
+    public Object resourceTree()  {
+        return resourceService.getRoleTree();
     }
 
     @ResponseBody

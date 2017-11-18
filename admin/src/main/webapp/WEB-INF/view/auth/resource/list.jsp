@@ -26,7 +26,7 @@
 <body class="childrenBody">
 <blockquote class="layui-elem-quote news_search">
     <div class="layui-inline">
-        <form id="searchForm" name="searchForm" class="layui-form" action="role/list">
+        <form id="searchForm" name="searchForm" class="layui-form" action="resource/list">
             <input type="hidden" id="currentPage" name="currentPage" value="${page.currentPage}"/>
             <div class="layui-input-inline">
                 <input type="text" value="${searchKey}" name="searchKey" placeholder="请输入关键字" class="layui-input search_input"/>
