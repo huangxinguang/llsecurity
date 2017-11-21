@@ -11,9 +11,7 @@
         <result column="type" jdbcType="INTEGER" property="type" />
         <result column="status" jdbcType="INTEGER" property="status" />
         <result column="sort" jdbcType="INTEGER" property="sort" />
-        <result column="path" jdbcType="VARCHAR" property="path" />
         <result column="icon" jdbcType="VARCHAR" property="icon" />
-        <result column="leaf" jdbcType="INTEGER" property="leaf" />
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
         <result column="create_by" jdbcType="VARCHAR" property="createBy" />
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
@@ -32,7 +30,7 @@
     </sql>
     
     <sql id="Base_Column_List">
-        id, parent_id, code, name, url, type, status, sort, path, icon, leaf, create_time, 
+        id, parent_id, code, name, url, type, status, sort,icon,create_time,
         create_by, update_time, update_by
     </sql>
     
@@ -53,9 +51,7 @@
           res.type,
           res.status,
           res.sort,
-          res.path,
           res.icon,
-          res.leaf,
           res.create_time,
           res.create_by,
           res.update_time,
@@ -104,14 +100,14 @@
     <insert id="insert" parameterType="com.laile.security.core.model.auth.resource.Resource">
         insert into t_resource (id, parent_id, code, 
             name, url, type, 
-            status, sort, path, 
-            icon, leaf, create_time, 
+            status, sort,
+            icon, create_time,
             create_by, update_time, update_by
             )
         values (#{id,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, 
             #{name,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
-            #{status,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, #{path,jdbcType=VARCHAR}, 
-            #{icon,jdbcType=VARCHAR}, #{leaf,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+            #{status,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER},
+            #{icon,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
             #{createBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}
             )
     </insert>
@@ -143,14 +139,8 @@
             <if test="sort != null">
                 sort,
             </if>
-            <if test="path != null">
-                path,
-            </if>
             <if test="icon != null">
                 icon,
-            </if>
-            <if test="leaf != null">
-                leaf,
             </if>
             <if test="createTime != null">
                 create_time,
@@ -190,14 +180,8 @@
             <if test="sort != null">
                 #{sort,jdbcType=INTEGER},
             </if>
-            <if test="path != null">
-                #{path,jdbcType=VARCHAR},
-            </if>
             <if test="icon != null">
                 #{icon,jdbcType=VARCHAR},
-            </if>
-            <if test="leaf != null">
-                #{leaf,jdbcType=INTEGER},
             </if>
             <if test="createTime != null">
                 #{createTime,jdbcType=TIMESTAMP},
@@ -238,14 +222,8 @@
             <if test="sort != null">
                 sort = #{sort,jdbcType=INTEGER},
             </if>
-            <if test="path != null">
-                path = #{path,jdbcType=VARCHAR},
-            </if>
             <if test="icon != null">
                 icon = #{icon,jdbcType=VARCHAR},
-            </if>
-            <if test="leaf != null">
-                leaf = #{leaf,jdbcType=INTEGER},
             </if>
             <if test="createTime != null">
                 create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -272,9 +250,7 @@
             type = #{type,jdbcType=INTEGER},
             status = #{status,jdbcType=INTEGER},
             sort = #{sort,jdbcType=INTEGER},
-            path = #{path,jdbcType=VARCHAR},
             icon = #{icon,jdbcType=VARCHAR},
-            leaf = #{leaf,jdbcType=INTEGER},
             create_time = #{createTime,jdbcType=TIMESTAMP},
             create_by = #{createBy,jdbcType=VARCHAR},
             update_time = #{updateTime,jdbcType=TIMESTAMP},
@@ -292,16 +268,16 @@
     <insert id="insertBatch" parameterType="java.util.List">
         insert into t_resource (id, parent_id, code, 
             name, url, type, 
-            status, sort, path, 
-            icon, leaf, create_time, 
+            status, sort,
+            icon,create_time,
             create_by, update_time, update_by
             )
          values 
         <foreach  collection="list" index="index" item="item" separator=",">
              (#{item.id,jdbcType=INTEGER}, #{item.parentId,jdbcType=INTEGER}, #{item.code,jdbcType=VARCHAR}, 
                 #{item.name,jdbcType=INTEGER}, #{item.url,jdbcType=VARCHAR}, #{item.type,jdbcType=INTEGER}, 
-                #{item.status,jdbcType=INTEGER}, #{item.sort,jdbcType=INTEGER}, #{item.path,jdbcType=VARCHAR}, 
-                #{item.icon,jdbcType=VARCHAR}, #{item.leaf,jdbcType=INTEGER}, #{item.createTime,jdbcType=TIMESTAMP}, 
+                #{item.status,jdbcType=INTEGER}, #{item.sort,jdbcType=INTEGER},
+                #{item.icon,jdbcType=VARCHAR},#{item.createTime,jdbcType=TIMESTAMP},
                 #{item.createBy,jdbcType=VARCHAR}, #{item.updateTime,jdbcType=TIMESTAMP}, #{item.updateBy,jdbcType=VARCHAR}
                 
             )
@@ -335,14 +311,8 @@
             <if test="record.sort != null">
                 sort = #{record.sort,jdbcType=INTEGER},
             </if>
-            <if test="record.path != null">
-                path = #{record.path,jdbcType=VARCHAR},
-            </if>
             <if test="record.icon != null">
                 icon = #{record.icon,jdbcType=VARCHAR},
-            </if>
-            <if test="record.leaf != null">
-                leaf = #{record.leaf,jdbcType=INTEGER},
             </if>
             <if test="record.createTime != null">
                 create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -407,14 +377,8 @@
             <if test="record.sort != null">
                  and sort = #{record.sort,jdbcType=INTEGER}
             </if>
-            <if test="record.path != null">
-                 and path = #{record.path,jdbcType=VARCHAR}
-            </if>
             <if test="record.icon != null">
                  and icon = #{record.icon,jdbcType=VARCHAR}
-            </if>
-            <if test="record.leaf != null">
-                 and leaf = #{record.leaf,jdbcType=INTEGER}
             </if>
             <if test="record.createTime != null">
                  and create_time = #{record.createTime,jdbcType=TIMESTAMP}
@@ -461,14 +425,8 @@
             <if test="record.sort != null">
                  and sort = #{record.sort,jdbcType=INTEGER}
             </if>
-            <if test="record.path != null">
-                 and path = #{record.path,jdbcType=VARCHAR}
-            </if>
             <if test="record.icon != null">
                  and icon = #{record.icon,jdbcType=VARCHAR}
-            </if>
-            <if test="record.leaf != null">
-                 and leaf = #{record.leaf,jdbcType=INTEGER}
             </if>
             <if test="record.createTime != null">
                  and create_time = #{record.createTime,jdbcType=TIMESTAMP}

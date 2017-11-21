@@ -8,9 +8,9 @@ import com.laile.security.admin.util.R;
 import com.laile.security.core.dto.AdminDto;
 import com.laile.security.core.model.auth.admin.Admin;
 import com.laile.security.core.model.auth.role.Role;
-import com.laile.security.core.util.CipherHelper;
-import com.laile.security.core.util.ConfigConst;
 import com.laile.security.core.vo.admin.AdminVo;
+import com.laile.security.security.cipher.CipherHelper;
+import com.laile.security.security.constant.SecurityConstant;
 import com.laile.security.service.auth.admin.IAdminService;
 import com.laile.security.service.auth.role.IRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -117,7 +117,7 @@ public class AdminController extends BaseController {
             admin.setCreateIp(IPUtils.getIpAddr(request));
             admin.setUpdatePwdCount(0);
             admin.setLimitCount(WebConstant.LOGIN_LIMIT_COUNT);
-            admin.setPassword(CipherHelper.encryptPassword(admin.getPassword(), ConfigConst.SOLT));
+            admin.setPassword(CipherHelper.encryptPassword(admin.getPassword(), SecurityConstant.SOLT));
             admin.setUpdateBy(getSessionUser().getAdminName());
             admin.setUpdateTime(new Date());
         }else {

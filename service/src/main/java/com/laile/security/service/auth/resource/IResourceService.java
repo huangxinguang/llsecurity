@@ -39,12 +39,6 @@ public interface IResourceService extends IBaseService<Resource,Integer> {
      */
     List<TreeNode> getSelectedResourceTree(Integer id);
 
-    /**
-     * 查询用户拥有的资源编码
-     * @param id
-     * @return
-     */
-    Set<String> queryResourceCodes(Integer id);
 
     /**
      * 查询分页

@@ -64,7 +64,7 @@ public class ResourceService extends AbstractService<Resource,Integer> implement
         for (Resource item : allMenuList) {
             menuDto = new MenuVo();
             BeanUtils.copyProperties(item,menuDto);
-            if (menuDto.getParentId().intValue() == -1) {
+            if (menuDto.getParentId().intValue() == 0) {
                 menuTreeList.add(menuDto);
             }
         }
@@ -88,7 +88,7 @@ public class ResourceService extends AbstractService<Resource,Integer> implement
             node.setName(resource.getName());
             node.setChecked(false);
             node.setOpen(true);
-            node.setpId(resource.getParentId().intValue() == -1 ? 0 : resource.getParentId());
+            node.setpId(resource.getParentId());
             allNodeList.add(node);
         }
         return allNodeList;
@@ -111,7 +111,7 @@ public class ResourceService extends AbstractService<Resource,Integer> implement
             node.setId(resource.getId());
             node.setName(resource.getName());
             node.setOpen(true);
-            node.setpId(resource.getParentId().intValue() == -1 ? 0 : resource.getParentId());
+            node.setpId(resource.getParentId());
 
             for(RoleResource roleResource : roleResourceList) {
                 if(roleResource.getResourceId().intValue() == resource.getId().intValue()) {
@@ -145,15 +145,10 @@ public class ResourceService extends AbstractService<Resource,Integer> implement
                 treeNode.setChecked(false);
             }
             treeNode.setOpen(true);
-            treeNode.setpId(item.getParentId().intValue() == -1 ? 0 : item.getParentId());
+            treeNode.setpId(item.getParentId());
             allNodeList.add(treeNode);
         }
         return allNodeList;
-    }
-
-    @Override
-    public Set<String> queryResourceCodes(Integer id) {
-        return resourceDelegate.queryResourceCodes(id);
     }
 
     @Override

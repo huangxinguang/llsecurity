@@ -22,11 +22,7 @@ public class MenuVo {
 
     private Integer sort;
 
-    private String path;
-
     private String icon;
-
-    private Integer leaf;
 
     private String target;
 
@@ -98,14 +94,6 @@ public class MenuVo {
         this.sort = sort;
     }
 
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
-
     public String getIcon() {
         return icon;
     }
@@ -114,13 +102,6 @@ public class MenuVo {
         this.icon = icon;
     }
 
-    public Integer getLeaf() {
-        return leaf;
-    }
-
-    public void setLeaf(Integer leaf) {
-        this.leaf = leaf;
-    }
 
     public List<MenuVo> getChilds() {
         return childs;

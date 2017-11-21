@@ -7,9 +7,9 @@ import com.laile.security.core.delegate.auth.admin.AdminDelegate;
 import com.laile.security.core.dto.AdminDto;
 import com.laile.security.core.exception.TipsException;
 import com.laile.security.core.model.auth.admin.Admin;
-import com.laile.security.core.util.CipherHelper;
-import com.laile.security.core.util.ConfigConst;
 import com.laile.security.core.vo.admin.AdminVo;
+import com.laile.security.security.cipher.CipherHelper;
+import com.laile.security.security.constant.SecurityConstant;
 import com.laile.security.service.auth.admin.IAdminService;
 import com.laile.security.service.impl.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +50,7 @@ public class AdminService extends AbstractService<Admin,Integer> implements IAdm
     @Override
     public void changePwd(Integer id, String password, String newPassword) {
         Admin admin = adminDelegate.selectByPrimaryKey(id);
-        if(!admin.getPassword().equalsIgnoreCase(CipherHelper.encryptPassword(password, ConfigConst.SOLT))) {
+        if(!admin.getPassword().equalsIgnoreCase(CipherHelper.encryptPassword(password, SecurityConstant.SOLT))) {
             throw new TipsException("原密码不正确");
         }else {
             Admin newAdmin = new Admin();
@@ -63,7 +63,7 @@ public class AdminService extends AbstractService<Admin,Integer> implements IAdm
     @Override
     public void unlock(Integer id,String password) {
         Admin admin = adminDelegate.selectByPrimaryKey(id);
-        if(!admin.getPassword().equalsIgnoreCase(CipherHelper.encryptPassword(password, ConfigConst.SOLT))) {
+        if(!admin.getPassword().equalsIgnoreCase(CipherHelper.encryptPassword(password, SecurityConstant.SOLT))) {
             throw new TipsException("密码不正确");
         }
     }

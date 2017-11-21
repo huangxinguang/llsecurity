@@ -8,8 +8,8 @@ import com.laile.security.admin.util.Jurisdiction;
 import com.laile.security.admin.util.R;
 import com.laile.security.core.exception.TipsException;
 import com.laile.security.core.model.auth.admin.Admin;
-import com.laile.security.core.util.CipherHelper;
-import com.laile.security.core.util.ConfigConst;
+import com.laile.security.security.cipher.CipherHelper;
+import com.laile.security.security.constant.SecurityConstant;
 import com.laile.security.service.auth.admin.IAdminService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -50,7 +50,7 @@ public class LoginController extends BaseController {
         if (admin == null) {
             throw new TipsException("用户名或密码不正确");
         }
-        admin = adminService.login(admin.getAdminName(), CipherHelper.encryptPassword(password, ConfigConst.SOLT));
+        admin = adminService.login(admin.getAdminName(), CipherHelper.encryptPassword(password, SecurityConstant.SOLT));
 
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(adminName, password);

@@ -4,8 +4,6 @@ import com.laile.esf.common.util.Page;
 import com.laile.security.core.model.auth.role.Role;
 import com.laile.security.service.IBaseService;
 
-import java.util.Set;
-
 /**
  * Created by huangxinguang on 2017/9/26 下午3:15.
  */
@@ -16,6 +14,4 @@ public interface IRoleService extends IBaseService<Role,Integer> {
     void saveOrUpdate(Role role, Integer[] menuIds);
 
     void delete(Integer id);
-
-    Set<String> queryAdminRoleCodes(Integer id);
 }

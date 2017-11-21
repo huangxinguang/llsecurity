@@ -19,11 +19,7 @@ public class Resource {
 
     private Integer sort;
 
-    private String path;
-
     private String icon;
-
-    private Integer leaf;
 
     private Date createTime;
 
@@ -97,30 +93,6 @@ public class Resource {
         this.sort = sort;
     }
 
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path == null ? null : path.trim();
-    }
-
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon == null ? null : icon.trim();
-    }
-
-    public Integer getLeaf() {
-        return leaf;
-    }
-
-    public void setLeaf(Integer leaf) {
-        this.leaf = leaf;
-    }
-
     public Date getCreateTime() {
         return createTime;
     }
@@ -151,5 +123,13 @@ public class Resource {
 
     public void setUpdateBy(String updateBy) {
         this.updateBy = updateBy == null ? null : updateBy.trim();
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 }
