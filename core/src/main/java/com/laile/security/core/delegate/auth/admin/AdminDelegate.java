@@ -16,6 +16,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
@@ -108,6 +109,7 @@ public class AdminDelegate extends AbstractDelegate<Admin,Integer> {
         return false;
     }
 
+    @Transactional(propagation = Propagation.NOT_SUPPORTED)
     public Admin login(String name,String password) {
         Admin admin = this.getAdmin(name);
         if(admin.getLimitCount().intValue() - admin.getLoginErrorCount().intValue() == 0) {

@@ -1,4 +1,4 @@
-package com.laile.security.admin.resolver;
+package com.laile.security.admin.handler;
 
 import com.alibaba.fastjson.JSON;
 import com.laile.esf.common.exception.BusinessException;

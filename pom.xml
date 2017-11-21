@@ -14,6 +14,7 @@
         <module>security</module>
         <module>service</module>
         <module>dsf</module>
+        <module>common</module>
     </modules>
 
 
